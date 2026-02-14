@@ -55,21 +55,21 @@ const STEPS = [
     title: 'STRATEGY_PROTOCOL',
     subtitle: 'LLM: PERPLEXITY',
     icon: <Terminal className="h-12 w-12 sm:h-20 sm:w-20" />,
-    description: "Architecting solution parameters via AI consultation. Generating step-by-step logic gates and validating initial code blueprints against project requirements.",
+    description: "I begin by consulting Perplexity to architect the solution. We iterate on the logic, generate core code blueprints, and validate the entire strategy before I write a single line of code.",
   },
   {
     id: '02',
     title: 'ASSEMBLY_PHASE',
     subtitle: 'ENV: VS_CODE',
     icon: <Cpu className="h-12 w-12 sm:h-20 sm:w-20" />,
-    description: "Executing implementation sequence. Injecting generated modules, resolving dependencies, and compiling the local build for integration testing.",
+    description: "Next, I switch to VS Code to bring the project to life. I integrate the generated modules, manage dependencies, and refine the codebase into a cohesive, production-ready application.",
   },
   {
     id: '03',
     title: 'DEPLOYMENT_CHECK',
     subtitle: 'TARGET: GITHUB_PAGES',
     icon: <Wifi className="h-12 w-12 sm:h-20 sm:w-20" />,
-    description: "Running final system diagnostics and responsiveness audits. Pushing verified build to production environment for public access.",
+    description: "Finally, I run system diagnostics and performance optimizations. Once the build is verified and fully responsive, I deploy it directly to GitHub Pages for public access.",
   }
 ];
 

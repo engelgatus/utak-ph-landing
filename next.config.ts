@@ -1,11 +1,13 @@
 /** @type {import('next').NextConfig} */
+const isProd = process.env.NODE_ENV === 'production';
+
 const nextConfig = {
-  output: 'export', 
+  output: 'export',
   images: {
-    unoptimized: true, 
+    unoptimized: true,
   },
-  basePath: '/utak-ph-landing', 
-  assetPrefix: '/utak-ph-landing/',
+  basePath: isProd ? '/utak-ph-landing' : '',
+  assetPrefix: isProd ? '/utak-ph-landing/' : '',
 };
 
 export default nextConfig;
