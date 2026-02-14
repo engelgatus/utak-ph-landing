@@ -1,11 +1,11 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
-  output: 'export',
-  basePath: process.env.NODE_ENV === 'production' ? '/utak-ph-landing' : '',
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  output: 'export', 
   images: {
-    unoptimized: true,
+    unoptimized: true, 
   },
+  basePath: '/utak-ph-landing', 
+  assetPrefix: '/utak-ph-landing/',
 };
 
 export default nextConfig;
