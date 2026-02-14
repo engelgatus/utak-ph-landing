@@ -90,7 +90,7 @@ const HyperspeedBackground = memo(() => (
 ));
 HyperspeedBackground.displayName = 'HyperspeedBackground';
 
-// 2. Stable Typewriter Effect (Slice-based)
+// 2. Stable Typewriter Effect
 const Typewriter = ({ 
   text, 
   speed = 30, 
@@ -108,14 +108,12 @@ const Typewriter = ({
   const [isDone, setIsDone] = useState(false);
 
   useEffect(() => {
-    // Reset immediately if text changes or stopped
     if (!start) {
         setDisplayText('');
         setIsDone(false);
         return;
     }
 
-    // If text changed, restart
     setDisplayText('');
     setIsDone(false);
 
@@ -138,50 +136,56 @@ const Typewriter = ({
   return (
     <span className={className}>
       {displayText}
-      {!isDone && start && (
-        <span className="animate-pulse bg-green-500 text-black ml-1">_</span>
-      )}
+      <span 
+        className={`ml-1 inline-block h-4 w-2 bg-green-500 align-middle ${
+          !isDone && start ? "animate-pulse" : "opacity-0"
+        }`} 
+      />
     </span>
   );
 };
 
 // 3. Sequenced Terminal Content
 const TerminalContent = ({ data }: { data: typeof STEPS[0] }) => {
-  // Since this component is re-mounted on every step (due to key={currentStep} in parent),
-  // we don't need to manually reset state. It initializes at 0 every time.
   const [stage, setStage] = useState(0); 
 
   return (
     <div className="flex flex-col justify-center text-left h-full">
       {/* Title */}
-      <h2 className="mb-4 text-3xl font-bold uppercase tracking-tighter sm:text-5xl text-green-400 drop-shadow-[0_0_5px_rgba(34,197,94,0.8)] h-12 sm:h-16 flex items-center">
-        <Typewriter 
-          text={data.title} 
-          start={true} 
-          speed={30}
-          onComplete={() => setStage(1)} 
-        />
-      </h2>
+      <div className="h-16 flex items-center mb-2">
+        <h2 className="text-3xl font-bold uppercase tracking-tighter sm:text-5xl text-green-400 drop-shadow-[0_0_5px_rgba(34,197,94,0.8)] leading-none">
+          <Typewriter 
+            text={data.title} 
+            start={true} 
+            speed={30}
+            onComplete={() => setStage(1)} 
+          />
+        </h2>
+      </div>
       
       {/* Subtitle */}
-      <p className="mb-8 text-lg font-bold uppercase tracking-widest text-green-600 h-8 flex items-center">
-        <Typewriter 
-          text={data.subtitle} 
-          start={stage >= 1} 
-          speed={20}
-          onComplete={() => setStage(2)} 
-        />
-      </p>
+      <div className="h-8 flex items-center mb-6">
+        <p className="text-lg font-bold uppercase tracking-widest text-green-600 leading-none">
+          <Typewriter 
+            text={data.subtitle} 
+            start={stage >= 1} 
+            speed={20}
+            onComplete={() => setStage(2)} 
+          />
+        </p>
+      </div>
       
       {/* Description */}
-      <p className="text-base leading-relaxed sm:text-xl opacity-90 min-h-20">
-        <span className="mr-2 text-green-400">{'>'}</span>
-        <Typewriter 
-          text={data.description} 
-          start={stage >= 2} 
-          speed={15} 
-        />
-      </p>
+      <div className="min-h-24 sm:min-h-28">
+        <p className="text-base leading-relaxed sm:text-xl opacity-90">
+          <span className="mr-2 text-green-400">{'>'}</span>
+          <Typewriter 
+            text={data.description} 
+            start={stage >= 2} 
+            speed={15} 
+          />
+        </p>
+      </div>
     </div>
   );
 };
@@ -204,6 +208,12 @@ export default function Hero() {
       setDirection(-1);
       setCurrentStep((prev) => prev - 1);
     }
+  };
+
+  const jumpToStep = (index: number) => {
+    if (index === currentStep) return;
+    setDirection(index > currentStep ? 1 : -1);
+    setCurrentStep(index);
   };
 
   const variants = {
@@ -239,7 +249,7 @@ export default function Hero() {
           <div className="mb-10 flex flex-col gap-2 border-b border-green-500/30 pb-4 text-xs uppercase tracking-widest opacity-80 sm:flex-row sm:items-center sm:justify-between sm:text-sm">
             <div className="flex gap-4">
               <span className="font-bold text-green-400">SYSTEM_STATUS: ONLINE</span>
-              <span>[MODEL: PERPLEXITY_SONNET]</span>
+              <span>[MODEL: PERPLEXITY_GEMINI_PRO]</span>
             </div>
             <div className="flex gap-4">
                <span>UPTIME: 99.9%</span>
@@ -256,14 +266,16 @@ export default function Hero() {
                 {currentData.icon}
               </div>
               
-              {/* Block Progress Bar */}
+              {/* Block Progress Bar - Now Interactive */}
               <div className="flex gap-3">
                 {STEPS.map((step, idx) => (
-                  <div 
+                  <button 
                     key={step.id}
-                    className={`h-3 w-3 sm:h-5 sm:w-5 border border-green-500 transition-all duration-300 ${
+                    onClick={() => jumpToStep(idx)}
+                    className={`h-3 w-3 sm:h-5 sm:w-5 border border-green-500 transition-all duration-300 cursor-pointer hover:bg-green-500/50 hover:shadow-[0_0_8px_rgba(34,197,94,0.6)] ${
                       idx === currentStep ? 'bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.8)]' : 'bg-transparent opacity-30'
                     }`}
+                    aria-label={`Go to step ${step.id}`}
                   />
                 ))}
               </div>
@@ -322,7 +334,7 @@ export default function Hero() {
             <div className="grid gap-4 sm:grid-cols-2">
               <div>
                 <span className="block text-green-600 mb-1">{'>> TARGET: UTAK_POS [REMOTE_VIBECODER]'}</span>
-                <p className="leading-tight">REQ: 2+ YRS REACT/NODE | GIT | PRODUCT_SENSE | INDEPENDENT</p>
+                <p className="leading-tight">REQ: REACT/NODE | GIT | PRODUCT_SENSE | INDEPENDENT</p>
                 <p className="leading-tight">STACK: NEXT.JS 14 | TYPESCRIPT | TAILWIND | THREE.JS</p>
               </div>
               <div className="sm:text-right">
