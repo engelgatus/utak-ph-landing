@@ -52,6 +52,6 @@ text
 🛠 Deployment Status
 This unit is configured for static export and deployed via GitHub Pages.
 
-Live Demo: (Website)[https://engelgatus.github.io/utak-ph-landing/]
+Live Demo: [Website](https://engelgatus.github.io/utak-ph-landing/)
 
 © 2026 Engel Gatus | Logic over Hype.
