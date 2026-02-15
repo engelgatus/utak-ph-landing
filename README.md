@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Utak POS - Vibecoder Application
 
-## Getting Started
+> **Mission Status:** APPLICATION_READY  
+> **Target:** Remote Vibecoder @ Utak POS  
+> **Operator:** Engel Gatus
 
-First, run the development server:
+A high-performance, terminal-aesthetic landing page built to demonstrate modern frontend architecture, motion design, and clean code principles.
 
+## ⚡ Tech Stack
+
+- **Core:** Next.js 14 (App Router), TypeScript, React
+- **Styling:** Tailwind CSS, Lucide React
+- **Motion:** Framer Motion (Orchestration), Three.js (WebGL Backgrounds)
+- **Typography:** JetBrains Mono
+
+## 🚀 Quick Start
+
+### 1. Initialize System
 ```bash
+# Clone repository
+git clone https://github.com/YOUR_USERNAME/utak-ph-landing.git
+
+# Enter directory
+cd utak-ph-landing
+
+# Install dependencies
+npm install
+2. Run Diagnostics (Dev Mode)
+bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+System available at: http://localhost:3000
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. Build for Production
+bash
+npm run build
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+📂 Project Architecture
+text
+├── app/
+│   ├── layout.tsx       # Root layout with JetBrains Mono injection
+│   └── page.tsx         # Main entry point
+├── components/
+│   ├── landing/         # Core UI sections (Hero, Terminal Interface)
+│   └── background/      # Three.js / WebGL modules
+└── public/              # Static assets
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+🛠 Deployment Status
+This unit is configured for static export and deployed via GitHub Pages.
 
-## Learn More
+Live Demo: (Website)[https://engelgatus.github.io/utak-ph-landing/]
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+© 2026 Engel Gatus | Logic over Hype.
