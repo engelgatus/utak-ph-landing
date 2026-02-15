@@ -6,14 +6,14 @@
 
 A high-performance, terminal-aesthetic landing page built to demonstrate modern frontend architecture, motion design, and clean code principles.
 
-## ⚡ Tech Stack
+## Tech Stack
 
 - **Core:** Next.js 14 (App Router), TypeScript, React
 - **Styling:** Tailwind CSS, Lucide React
 - **Motion:** Framer Motion (Orchestration), Three.js (WebGL Backgrounds)
 - **Typography:** JetBrains Mono
 
-## 🚀 Quick Start
+## Quick Start
 
 ### 1. Initialize System
 ```bash
@@ -34,7 +34,11 @@ System available at: http://localhost:3000
 bash
 npm run build
 
+```
+
 📂 Project Architecture
+
+```bash
 text
 ├── app/
 │   ├── layout.tsx       # Root layout with JetBrains Mono injection
@@ -43,6 +47,7 @@ text
 │   ├── landing/         # Core UI sections (Hero, Terminal Interface)
 │   └── background/      # Three.js / WebGL modules
 └── public/              # Static assets
+```
 
 🛠 Deployment Status
 This unit is configured for static export and deployed via GitHub Pages.
